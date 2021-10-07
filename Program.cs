@@ -6,17 +6,25 @@ namespace Module_5
     {
         static void Main(string[] args)
         {
-            (string Name,string[] Dishes) User;
 
-            Console.WriteLine("Введите имя пользователя:");
-            User.Name = Console.ReadLine();
-            User.Dishes = new string[5];
-            for(int i = User.Dishes.Length - 1;i >= 0;i--)
+            var favcolors = new string[3];
+            for(int i = 0;i < favcolors.Length;i++)
             {
-                Console.WriteLine("Введите любимое блюдо №{0}",i+1);
-                User.Dishes[i] = Console.ReadLine();
+                favcolors[i] = ShowColor();
             }
-
+            Console.WriteLine("Ваши любимые цвета");
+            foreach(var color in favcolors)
+            {
+                Console.WriteLine(color);
+            }
         }
+
+        static string ShowColor()
+        {
+            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            var color = Console.ReadLine();
+            return color;
+        }
+
     }
 }
