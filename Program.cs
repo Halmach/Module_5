@@ -45,7 +45,29 @@ namespace Module_5
         static string ShowColor(string name)
         {
             Console.WriteLine(name + ",напишите свой любимый цвет на английском с маленькой буквы");
-            var color = Console.ReadLine();
+            var color = Console.ReadLine().ToLower();
+            switch(color)
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;     
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;        
+                case "green":    
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;       
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+
+            }
+
+            
             return color;
         }
 
