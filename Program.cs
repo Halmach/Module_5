@@ -31,6 +31,24 @@ namespace Module_5
 
 
             var favcolors = new string[3];
+
+
+            var array = GetArrayFromConsole();
+            int i = 1, j = 2;
+            while (i < array.Length)
+                int i = 1, j = 2;
+            while (i < array.Length)
+            {
+                if (array[i - 1] <= array[i]) { i = j; j++; }
+                else
+                {
+                    int t = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = t;
+                    i--;
+                    if (i == 0) { i = j; j++; }
+                }
+            }
             for (int i = 0;i < favcolors.Length;i++)
             {
                 favcolors[i] = ShowColor(anketa.myName,anketa.age);
@@ -40,6 +58,8 @@ namespace Module_5
             {
                 Console.WriteLine(color);
             }
+            foreach (var arrItem in array) Console.Write(arrItem + " ");
+
         }
 
         static string ShowColor(string name, int userage)
@@ -69,6 +89,19 @@ namespace Module_5
 
             
             return color;
+        }
+
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[5];
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+
+            return result;
         }
 
     }
