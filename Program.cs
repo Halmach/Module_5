@@ -27,28 +27,14 @@ namespace Module_5
             Console.WriteLine("Your favourite day of week is " + anketa.day);
             Console.WriteLine("Your birthday is " + anketa.birthdate);
 
-
+            
 
 
             var favcolors = new string[3];
 
 
-            var array = GetArrayFromConsole();
-            int i = 1, j = 2;
-            while (i < array.Length)
-                int i = 1, j = 2;
-            while (i < array.Length)
-            {
-                if (array[i - 1] <= array[i]) { i = j; j++; }
-                else
-                {
-                    int t = array[i];
-                    array[i] = array[i - 1];
-                    array[i - 1] = t;
-                    i--;
-                    if (i == 0) { i = j; j++; }
-                }
-            }
+            var array = SortArray(GetArrayFromConsole());
+          
             for (int i = 0;i < favcolors.Length;i++)
             {
                 favcolors[i] = ShowColor(anketa.myName,anketa.age);
@@ -64,7 +50,7 @@ namespace Module_5
 
         static string ShowColor(string name, int userage)
         {
-            Console.WriteLine(name +" " + userage + " лет "+ Environment.NewLine + ",напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine(name +" " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
             var color = Console.ReadLine().ToLower();
             switch(color)
             {
@@ -102,6 +88,24 @@ namespace Module_5
             }
 
             return result;
+        }
+
+        static int[] SortArray(int[] array)
+        {
+            int i = 1, j = 2;
+            while (i < array.Length)
+            {
+                if (array[i - 1] <= array[i]) { i = j; j++; }
+                else
+                {
+                    int t = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = t;
+                    i--;
+                    if (i == 0) { i = j; j++; }
+                }
+            }
+            return array;
         }
 
     }
