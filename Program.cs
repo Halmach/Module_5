@@ -32,7 +32,7 @@ namespace Module_5
 
             var favcolors = new string[3];
 
-            ShowArray(GetArrayFromConsole(3),true);
+            ShowArray(GetArrayFromConsole(10),true);
             //var sortedarray = SortArray(GetArrayFromConsole(3));
 
             for (int i = 0;i < favcolors.Length;i++)
