@@ -33,7 +33,7 @@ namespace Module_5
             var favcolors = new string[3];
 
 
-            var array = SortArray(GetArrayFromConsole());
+            var sortedarray = SortArray(GetArrayFromConsole());
           
             for (int i = 0;i < favcolors.Length;i++)
             {
@@ -43,7 +43,7 @@ namespace Module_5
             ShowColors();
 
 
-            foreach (var arrItem in array) Console.Write(arrItem + " ");
+            foreach (var arrItem in sortedarray) Console.Write(arrItem + " ");
 
         }
 
