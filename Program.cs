@@ -37,18 +37,16 @@ namespace Module_5
           
             for (int i = 0;i < favcolors.Length;i++)
             {
-                favcolors[i] = ShowColor(anketa.myName,anketa.age);
+                favcolors[i] = ChangeColor(anketa.myName,anketa.age);
             }
-            Console.WriteLine("Ваши любимые цвета");
-            foreach(var color in favcolors)
-            {
-                Console.WriteLine(color);
-            }
+            ShowColors(favcolors[0],favcolors[2]);
+
+
             foreach (var arrItem in array) Console.Write(arrItem + " ");
 
         }
 
-        static string ShowColor(string name, int userage)
+        static string ChangeColor(string name, int userage)
         {
             Console.WriteLine(name +" " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
             var color = Console.ReadLine().ToLower();
@@ -75,6 +73,15 @@ namespace Module_5
 
             
             return color;
+        }
+
+        static void ShowColors(params string[] favcolors)
+        {
+            Console.WriteLine("Ваши любимые цвета:");
+            foreach (var color in favcolors)
+            {
+                Console.WriteLine(color);
+            }
         }
 
         static int[] GetArrayFromConsole()
