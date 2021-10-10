@@ -32,9 +32,9 @@ namespace Module_5
 
             var favcolors = new string[3];
 
+            ShowArray(GetArrayFromConsole(3),true);
+            //var sortedarray = SortArray(GetArrayFromConsole(3));
 
-            var sortedarray = SortArray(GetArrayFromConsole());
-          
             for (int i = 0;i < favcolors.Length;i++)
             {
                 favcolors[i] = ChangeColor(anketa.myName,anketa.age);
@@ -43,13 +43,13 @@ namespace Module_5
             ShowColors();
 
 
-            foreach (var arrItem in sortedarray) Console.Write(arrItem + " ");
+           
 
         }
 
         static string ChangeColor(string name, int userage)
         {
-            Console.WriteLine(name +" " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine(Environment.NewLine + name + " " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
             var color = Console.ReadLine().ToLower();
             switch(color)
             {
@@ -85,7 +85,7 @@ namespace Module_5
             }
         }
 
-        static int[] GetArrayFromConsole(int num = 5)
+        static int[] GetArrayFromConsole(int num = 3)
         {
             var result = new int[num];
 
@@ -114,6 +114,14 @@ namespace Module_5
                 }
             }
             return array;
+        }
+
+        static void ShowArray(int[] array,bool switchSort = false)
+        {
+            int[] result;
+            if (switchSort) result = SortArray(array);
+            else result = array;
+            foreach (var arrItem in result) Console.Write(arrItem + " ");
         }
 
     }
