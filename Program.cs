@@ -63,11 +63,15 @@ namespace Module_5
 
 
 var arr = new int[] { 1, 2, 3 };
-BigDataOperation(arr);
+int data = 100;
+BigDataOperation(arr,ref data);
 
 Console.WriteLine(arr[0]);
-BigDataOperation(arr);
+BigDataOperation(arr, ref data);
 Console.WriteLine(arr[0]);
+            int num = 10;
+            arr = GetArrayFromConsole(ref num);
+            ShowArray(arr);
 
         }
 
@@ -109,18 +113,19 @@ foreach (var color in favcolors)
 }
 }
 
-static int[] GetArrayFromConsole(int num = 3)
-{
-var result = new int[num];
+    static int[] GetArrayFromConsole(ref int num)
+    {
+            num = 6;
+        var result = new int[num];
 
-for (int i = 0; i < result.Length; i++)
-{
-   Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-   result[i] = int.Parse(Console.ReadLine());
-}
+        for (int i = 0; i < result.Length; i++)
+        {
+           Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+           result[i] = int.Parse(Console.ReadLine());
+        }
 
-return result;
-}
+        return result;
+    }
 
 static int[] SortArray(int[] array)
 {
@@ -174,9 +179,10 @@ static void ChangeName_in(in string name)
 
     /* Этот модификатор защищает данные от изменения: 
     * в методе их изменить нельзя, но сам параметр при этом передается по ссылке */
-static void BigDataOperation(in int[] arr) 
+static void BigDataOperation(in int[] arr,ref int data) 
 {
-    arr[0] = 4;
+    data = 13;
+    arr[0] = data;
 }
 
     }
