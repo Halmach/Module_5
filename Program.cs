@@ -45,7 +45,7 @@ namespace Module_5
 
             /* Основная разница в этом: когда параметры передаются по ссылке, 
              * они изменяются, когда по значению — нет. */
-            string test_name = "Vasya";
+            //string test_name = "Vasya";
             //Console.WriteLine(test_name);
             //GetName(test_name); //  работа по значению.
             //Console.WriteLine(test_name);
@@ -62,32 +62,36 @@ namespace Module_5
             //Console.WriteLine(test_name);
 
 
-//            var arr = new int[] { 1, 2, 3 };
-//int data = 100;
-//BigDataOperation(arr,ref data);
+            //            var arr = new int[] { 1, 2, 3 };
+            //int data = 100;
+            //BigDataOperation(arr,ref data);
 
-//Console.WriteLine(arr[0]);
-//BigDataOperation(arr, ref data);
-//Console.WriteLine(arr[0]);
-//            int num = 10;
-//            arr = GetArrayFromConsole(ref num);
-//            ShowArray(arr);
+            //Console.WriteLine(arr[0]);
+            //BigDataOperation(arr, ref data);
+            //Console.WriteLine(arr[0]);
+            //            int num = 10;
+            //            arr = GetArrayFromConsole(ref num);
+            //            ShowArray(arr);
 
 
             // Этот модификатор значит,
             // что параметр является выходным,
             // то есть его значение является результатом работы метода
-            GetName_modf_out(out test_name);
-            Console.WriteLine(test_name);
+            //GetName_modf_out(out test_name);
+            //Console.WriteLine(test_name);
 
-            string oldname;
+            //string oldname;
             //Console.WriteLine("oldname(before function) = " + oldname);
 
             // можно изменять несколько объектов в методе и возвращать их
 
             // out должно быть обязательно изменено, а ref можно не менять
-            GetName_modf_out_2(out test_name, out  oldname);
+
+            //Это является более удобной и краткой версией записи,
+            //и далее эти переменные уже можно использовать.
+            GetName_modf_out_2(out string test_name, out string  oldname);
             Console.WriteLine("oldname(after function) = " + oldname);
+            Console.WriteLine("test_name(after function) = " + test_name);
         }
 
 static string ChangeColor(string name, int userage)
@@ -213,6 +217,8 @@ static void BigDataOperation(in int[] arr,ref int data)
             name = Console.ReadLine();
 
         }
+
+
 
     }
 }
