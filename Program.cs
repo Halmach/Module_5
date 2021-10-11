@@ -52,6 +52,9 @@ namespace Module_5
             ChangeAge(age); //  работа по значению.
             Console.WriteLine(age);
 
+            ChangeName(ref test_name); // работа по ссылке
+            Console.WriteLine(test_name); 
+
         }
 
         static string ChangeColor(string name, int userage)
@@ -142,6 +145,11 @@ namespace Module_5
         {
             Console.WriteLine("Введите возраст:");
             age = Convert.ToInt32(Console.ReadLine());
+        }
+        static void ChangeName(ref string name)
+        {
+            Console.WriteLine("Введите имя(работа по ссылке):");
+            name = Console.ReadLine();
         }
 
     }
