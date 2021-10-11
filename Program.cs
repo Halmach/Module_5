@@ -218,6 +218,14 @@ static void BigDataOperation(in int[] arr,ref int data)
 
         }
 
+        static int SumNumbers(ref int num1,in int num2, out int num3, int num4)
+        {
+            num1 = 10;
+            num3 = num1 + num2;
+            return (num1 + num2 + num3) * num4;
+
+        }
+
 
 
     }
