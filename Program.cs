@@ -9,70 +9,85 @@ namespace Module_5
 
             //(string myName, byte age, DayOfWeek day, string birthdate) anketa;
 
-//Console.WriteLine("What is your name?");
-//anketa.myName = Console.ReadLine();
-//Console.WriteLine("Enter your age");
-//bool isAgeCorrenct = byte.TryParse(Console.ReadLine(), out anketa.age);
-//while (!isAgeCorrenct)
-//{
-//    Console.WriteLine("Enter your age");
-//    isAgeCorrenct = byte.TryParse(Console.ReadLine(), out anketa.age);
-//}
-//Console.WriteLine("What is your favourite day of week?");
-//anketa.day = (DayOfWeek)checked(byte.Parse(Console.ReadLine()));
-//Console.WriteLine("Enter your birthdate: ");
-//anketa.birthdate = checked(Console.ReadLine());
-//Console.WriteLine("My name is {0}", anketa.myName);
-//Console.WriteLine("My age is {0}", anketa.age);
-//Console.WriteLine("Your favourite day of week is " + anketa.day);
-//Console.WriteLine("Your birthday is " + anketa.birthdate);
+            //Console.WriteLine("What is your name?");
+            //anketa.myName = Console.ReadLine();
+            //Console.WriteLine("Enter your age");
+            //bool isAgeCorrenct = byte.TryParse(Console.ReadLine(), out anketa.age);
+            //while (!isAgeCorrenct)
+            //{
+            //    Console.WriteLine("Enter your age");
+            //    isAgeCorrenct = byte.TryParse(Console.ReadLine(), out anketa.age);
+            //}
+            //Console.WriteLine("What is your favourite day of week?");
+            //anketa.day = (DayOfWeek)checked(byte.Parse(Console.ReadLine()));
+            //Console.WriteLine("Enter your birthdate: ");
+            //anketa.birthdate = checked(Console.ReadLine());
+            //Console.WriteLine("My name is {0}", anketa.myName);
+            //Console.WriteLine("My age is {0}", anketa.age);
+            //Console.WriteLine("Your favourite day of week is " + anketa.day);
+            //Console.WriteLine("Your birthday is " + anketa.birthdate);
 
 
 
 
-//var favcolors = new string[3];
+            //var favcolors = new string[3];
 
-//ShowArray(GetArrayFromConsole(10),true);
-////var sortedarray = SortArray(GetArrayFromConsole(3));
+            //ShowArray(GetArrayFromConsole(10),true);
+            ////var sortedarray = SortArray(GetArrayFromConsole(3));
 
-//for (int i = 0;i < favcolors.Length;i++)
-//{
-//    favcolors[i] = ChangeColor(anketa.myName,anketa.age);
-//}
-////ShowColors(anketa.myName, favcolors[0],favcolors[2]);
-//ShowColors();
-
-
-/* Основная разница в этом: когда параметры передаются по ссылке, 
- * они изменяются, когда по значению — нет. */
-//string test_name = "Vasya";
-//Console.WriteLine(test_name);
-//GetName(test_name); //  работа по значению.
-//Console.WriteLine(test_name);
-
-//int age = 20;
-//Console.WriteLine(age);
-//ChangeAge(age); //  работа по значению.
-//Console.WriteLine(age);
-
-//ChangeName(ref test_name); // работа по ссылке
-//Console.WriteLine(test_name); 
-
-//ChangeName_in(in test_name); // работа по ссылке без возможности измения
-//Console.WriteLine(test_name);
+            //for (int i = 0;i < favcolors.Length;i++)
+            //{
+            //    favcolors[i] = ChangeColor(anketa.myName,anketa.age);
+            //}
+            ////ShowColors(anketa.myName, favcolors[0],favcolors[2]);
+            //ShowColors();
 
 
-var arr = new int[] { 1, 2, 3 };
-int data = 100;
-BigDataOperation(arr,ref data);
+            /* Основная разница в этом: когда параметры передаются по ссылке, 
+             * они изменяются, когда по значению — нет. */
+            string test_name = "Vasya";
+            //Console.WriteLine(test_name);
+            //GetName(test_name); //  работа по значению.
+            //Console.WriteLine(test_name);
 
-Console.WriteLine(arr[0]);
-BigDataOperation(arr, ref data);
-Console.WriteLine(arr[0]);
-            int num = 10;
-            arr = GetArrayFromConsole(ref num);
-            ShowArray(arr);
+            //int age = 20;
+            //Console.WriteLine(age);
+            //ChangeAge(age); //  работа по значению.
+            //Console.WriteLine(age);
 
+            //ChangeName(ref test_name); // работа по ссылке
+            //Console.WriteLine(test_name); 
+
+            //ChangeName_in(in test_name); // работа по ссылке без возможности измения
+            //Console.WriteLine(test_name);
+
+
+//            var arr = new int[] { 1, 2, 3 };
+//int data = 100;
+//BigDataOperation(arr,ref data);
+
+//Console.WriteLine(arr[0]);
+//BigDataOperation(arr, ref data);
+//Console.WriteLine(arr[0]);
+//            int num = 10;
+//            arr = GetArrayFromConsole(ref num);
+//            ShowArray(arr);
+
+
+            // Этот модификатор значит,
+            // что параметр является выходным,
+            // то есть его значение является результатом работы метода
+            GetName_modf_out(out test_name);
+            Console.WriteLine(test_name);
+
+            string oldname;
+            //Console.WriteLine("oldname(before function) = " + oldname);
+
+            // можно изменять несколько объектов в методе и возвращать их
+
+            // out должно быть обязательно изменено, а ref можно не менять
+            GetName_modf_out_2(out test_name, out  oldname);
+            Console.WriteLine("oldname(after function) = " + oldname);
         }
 
 static string ChangeColor(string name, int userage)
@@ -184,6 +199,20 @@ static void BigDataOperation(in int[] arr,ref int data)
     data = 13;
     arr[0] = data;
 }
+
+        static void GetName_modf_out(out string name)
+        {
+            Console.WriteLine("Введите имя");
+            name = Console.ReadLine();
+
+        }
+        static void GetName_modf_out_2(out string name, out string oldname)
+        {
+            oldname = "Евгения";
+            Console.WriteLine("Введите имя");
+            name = Console.ReadLine();
+
+        }
 
     }
 }
