@@ -93,22 +93,47 @@ namespace Module_5
             //Console.WriteLine("oldname(after function) = " + oldname);
             //Console.WriteLine("test_name(after function) = " + test_name);
 
-            int[] array = new int[5] {1,422,-135,-53,341};
-            int[] array_1;
-            int[] array_2;
-            SortArray(in array, out array_1, out array_2);
-            Console.WriteLine("Исходный массив:");
-            ShowArray(array);
-            Console.WriteLine(Environment.NewLine + "Отсортированный массив(asc - от меньшего к большему)");
-            ShowArray(array_2);
-            Console.WriteLine(Environment.NewLine + "Отсортированный массив(desc - от большего к меньшему)");
-            ShowArray(array_1);
-  
+            //int[] array = new int[5] {1,422,-135,-53,341};
+            //int[] array_1;
+            //int[] array_2;
+            //SortArray(in array, out array_1, out array_2);
+            //Console.WriteLine("Исходный массив:");
+            //ShowArray(array);
+            //Console.WriteLine(Environment.NewLine + "Отсортированный массив(asc - от меньшего к большему)");
+            //ShowArray(array_2);
+            //Console.WriteLine(Environment.NewLine + "Отсортированный массив(desc - от большего к меньшему)");
+            //ShowArray(array_1);
+
+
+
+            Console.WriteLine("Напишите что-то");
+            var str = Console.ReadLine();
+
+            Console.WriteLine("Укажите глубину эха");
+            var deep = int.Parse(Console.ReadLine());
+
+            Echo(str, deep);
+
+            Console.ReadKey();
+
 
 
         }
 
-static string ChangeColor(string name, int userage)
+
+
+        static void Echo(string saidworld, int deep)
+        {
+            saidworld = saidworld.Remove(0, 2);
+            Console.WriteLine(saidworld);
+
+            if (deep > 2)
+            {
+                Echo(saidworld, deep - 1);
+            }
+        }
+
+        static string ChangeColor(string name, int userage)
 {
 Console.WriteLine(Environment.NewLine + name + " " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
 var color = Console.ReadLine().ToLower();
