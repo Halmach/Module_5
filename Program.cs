@@ -124,6 +124,8 @@ namespace Module_5
 
         static void Echo(string saidworld, int deep)
         {
+            Console.BackgroundColor = (ConsoleColor)deep;
+            Console.ForegroundColor = ConsoleColor.Black;
             saidworld = saidworld.Remove(0, 2);
             Console.WriteLine(saidworld);
 
