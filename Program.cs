@@ -89,9 +89,23 @@ namespace Module_5
 
             //Это является более удобной и краткой версией записи,
             //и далее эти переменные уже можно использовать.
-            GetName_modf_out_2(out string test_name, out string  oldname);
-            Console.WriteLine("oldname(after function) = " + oldname);
-            Console.WriteLine("test_name(after function) = " + test_name);
+            //GetName_modf_out_2(out string test_name, out string  oldname);
+            //Console.WriteLine("oldname(after function) = " + oldname);
+            //Console.WriteLine("test_name(after function) = " + test_name);
+
+            int[] array = new int[5] {1,422,-135,-53,341};
+            int[] array_1;
+            int[] array_2;
+            SortArray(in array, out array_1, out array_2);
+            Console.WriteLine("Исходный массив:");
+            ShowArray(array);
+            Console.WriteLine(Environment.NewLine + "Отсортированный массив(asc - от меньшего к большему)");
+            ShowArray(array_2);
+            Console.WriteLine(Environment.NewLine + "Отсортированный массив(desc - от большего к меньшему)");
+            ShowArray(array_1);
+  
+
+
         }
 
 static string ChangeColor(string name, int userage)
@@ -146,33 +160,22 @@ foreach (var color in favcolors)
         return result;
     }
 
-static int[] SortArray(int[] array)
+static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
 {
-int i = 1, j = 2;
-while (i < array.Length)
-{
-   if (array[i - 1] <= array[i]) { i = j; j++; }
-   else
-   {
-       int t = array[i];
-       array[i] = array[i - 1];
-       array[i - 1] = t;
-       i--;
-       if (i == 0) { i = j; j++; }
-   }
-}
-return array;
+            sorteddesc = SortArrayDesc(array);
+            sortedasc = SortArrayAsc(array);
 }
 
-static void ShowArray(int[] array,bool switchSort = false)
-{
-int[] result;
-if (switchSort) result = SortArray(array);
-else result = array;
-foreach (var arrItem in result) Console.Write(arrItem + " ");
-}
+        static void ShowArray(int[] array, bool switchSort = false)
+        {
+            //int[] result;
+            ////if (switchSort) result = SortArray(array);
+            ////else 
+            //    result = array;
+            foreach (var arrItem in array) Console.Write(arrItem + " ");
+        }
 
-static void GetName(string name)
+        static void GetName(string name)
 {
 Console.WriteLine("Введите имя");
 name = Console.ReadLine();
@@ -224,6 +227,47 @@ static void BigDataOperation(in int[] arr,ref int data)
             num3 = num1 + num2;
             return (num1 + num2 + num3) * num4;
 
+        }
+
+        static int[] SortArrayAsc(int[] array)
+        {
+            
+            int[] result = new int[array.Length];
+            Array.Copy(array, result, array.Length);
+            int i = 1, j = 2;
+            while (i < result.Length)
+            {
+                if (result[i - 1] <= result[i]) { i = j; j++; }
+                else
+                {
+                    int t = result[i];
+                    result[i] = result[i - 1];
+                    result[i - 1] = t;
+                    i--;
+                    if (i == 0) { i = j; j++; }
+                }
+            }
+            return result;
+        }
+
+        static int[] SortArrayDesc(int[] array)
+        {
+            int[] result = new int[array.Length];
+            Array.Copy(array, result, array.Length);
+            int i = 1, j = 2;
+            while (i < result.Length)
+            {
+                if (result[i - 1] >= result[i]) { i = j; j++; }
+                else
+                {
+                    int t = result[i];
+                    result[i] = result[i - 1];
+                    result[i - 1] = t;
+                    i--;
+                    if (i == 0) { i = j; j++; }
+                }
+            }
+            return result;
         }
 
 
