@@ -106,36 +106,78 @@ namespace Module_5
 
 
 
-            Console.WriteLine("Напишите что-то");
-            var str = Console.ReadLine();
+            //    Console.WriteLine("Напишите что-то");
+            //    var str = Console.ReadLine();
 
-            Console.WriteLine("Укажите глубину эха");
-            var deep = int.Parse(Console.ReadLine());
+            //    Console.WriteLine("Укажите глубину эха");
+            //    var deep = int.Parse(Console.ReadLine());
 
-            Echo(str, deep);
+            //    Echo(str, deep);
 
-            Console.ReadKey();
+            //    Console.ReadKey();
+
+            //Console.WriteLine(Factorial(20));
 
 
+            Console.WriteLine(PowerUp(2,9));
 
         }
 
-
-
-        static void Echo(string saidworld, int deep)
+        public static int PowerUp(int N, byte pow)
         {
-            Console.BackgroundColor = (ConsoleColor)deep;
-            Console.ForegroundColor = ConsoleColor.Black;
-            saidworld = saidworld.Remove(0, 2);
-            Console.WriteLine(saidworld);
-
-            if (deep > 2)
+            if (pow == 0)
             {
-                Echo(saidworld, deep - 1);
+                return 1;
+            }
+            else
+            {
+                //if (pow == 1)
+                //{
+                //    return N;
+                //}
+                //else
+                //{
+                    return N * PowerUp(N, --pow);
+                //}
+            }
+        }
+        //private static int PowerUp(int N, byte pow)
+        //{
+        //    if (pow > 0) {  return N * PowerUp(N,--pow); }
+        //    else return 1;
+        //}
+
+        static decimal Factorial(int x)
+        {
+            if (x == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return x * Factorial(x - 1);
             }
         }
 
-        static string ChangeColor(string name, int userage)
+
+        static void Echo(string saidworld, int deep)
+            {
+                Console.BackgroundColor = (ConsoleColor)deep;
+                Console.ForegroundColor = ConsoleColor.Black;
+                saidworld = saidworld.Remove(0, 2);
+                Console.WriteLine(saidworld);
+
+                if (deep > 2)
+                {
+                    Echo(saidworld, deep - 1);
+                }
+            }
+
+
+
+
+
+            static string ChangeColor(string name, int userage)
 {
 Console.WriteLine(Environment.NewLine + name + " " + userage + " лет,"+ Environment.NewLine + "напишите свой любимый цвет на английском с маленькой буквы");
 var color = Console.ReadLine().ToLower();
